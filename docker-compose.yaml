@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  db:
+    container_name: good_db
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: "A8rWUhCS2LPvaz4duLKkBdb3u5HUPC"
+      POSTGRES_DB: "goods"
+    ports:
+      - "5433:5432"
+  redis:
+    image: redis:latest
+    restart: always
+    container_name: redis_cache
+    ports:
+      - "6379:6379"
+    environment:
+      REDIS_PASSWORD: "A8rWUhCS2LPvaz4duLKkBdb3u5HUPC"
+      REDIS_DATABASES: 0
+  nats:
+    image: nats:latest
+    restart: always
+    container_name: nats_server
+    ports:
+      - "4222:4222"
